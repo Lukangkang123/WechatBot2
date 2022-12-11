@@ -274,7 +274,7 @@ export class ChatGPTBot {
       ""
     );
     // remove more text via - - - - - - - - - - - - - - -
-    return text;
+    return text.trim();
   }
   async getGPTMessage(text: string, talkerId: string): Promise<string> {
     return await this.chatGPTPool.sendMessage(text, talkerId);
@@ -358,6 +358,7 @@ export class ChatGPTBot {
     if (rawText=="[爱心}") {
       return rawText
     }
+    
     if (this.tiggerGPTMessage(rawText, privateChat)) {
       const text = this.cleanMessage(rawText, privateChat);
       if (privateChat) {
