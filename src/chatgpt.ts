@@ -355,10 +355,11 @@ export class ChatGPTBot {
     if (this.isNonsense(talker, messageType, rawText)) {
       return;
     }
-    if (rawText=="[爱心}") {
-      return rawText
+    if (rawText=="[爱心]") {
+      await talker.say(rawText);
+      return;
     }
-    
+
     if (this.tiggerGPTMessage(rawText, privateChat)) {
       const text = this.cleanMessage(rawText, privateChat);
       if (privateChat) {
